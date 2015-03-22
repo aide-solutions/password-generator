@@ -26,6 +26,7 @@
 
         static void Main(string[] args)
         {
+
             if (args == null || args.Length == 0)
                 DisplayArguments();
             else
