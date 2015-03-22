@@ -1,0 +1,278 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Views="clr-namespace:Wpf.Views"
+                    xmlns:Converters="clr-namespace:Wpf.Converters">
+
+    <!-- Converters -->
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <Converters:PasswordStrengthEnumToStringConverter x:Key="PasswordStrengthEnumToStringConverter" />
+    <Converters:PasswordStrengthEnumToBrushConverter x:Key="PasswordStrengthEnumToBrushConverter" />
+    
+    
+    <!-- Images -->
+    <Style x:Key="ImageAlerteStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/alert_48.png"/>
+        <Setter Property="Width" Value="48"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Stretch" Value="Fill"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style x:Key="ImageInfoStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/info_48.png"/>
+        <Setter Property="Width" Value="48"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Stretch" Value="Fill"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style x:Key="ImageCancelStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/stop_24.png"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Stretch" Value="Fill"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <Style x:Key="ImageOpenStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/open_24.png"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <Style x:Key="ImageSaveStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/save_16.png"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <Style x:Key="ImageClearStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/clear_16.png"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <Style x:Key="ImageOkStyle" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/EasyPasswordGenerator;component/Images/ok_16.png"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <!--SliderStyle-->
+    <Style x:Key="SliderStyle" TargetType="{x:Type Slider}" >
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="5" />
+        <Setter Property="SmallChange" Value="1" />
+        <Setter Property="TickPlacement" Value="Both" />
+        <Setter Property="IsSnapToTickEnabled" Value="True" />
+        <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="AutoToolTipPlacement" Value="TopLeft" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+    <!--CheckBox-->
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+    </Style>
+    <!--PasswordStrengthBorderStyle-->
+    <Style x:Key="PasswordStrengthBorderStyle" TargetType="{x:Type Border}" >
+        <Setter Property="Margin" Value="1,3"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Opacity="0.5" Direction="135" ShadowDepth="1"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- MainViewContentStyle -->
+    <Style x:Key="MainViewContentStyle" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Margin="5" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!-- Options -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <GroupBox Header="Options" Grid.Column="0" Margin="5" Grid.RowSpan="3">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MinHeight="30"/>
+                                            <RowDefinition MinHeight="30"/>
+                                            <RowDefinition MinHeight="30"/>
+                                            <RowDefinition MinHeight="30"/>
+                                            <RowDefinition MinHeight="30"/>
+                                        </Grid.RowDefinitions>
+                                        <CheckBox x:Name="chkUpper" Grid.Column="0" Grid.Row="0" Content="Force upper case" VerticalAlignment="Center" Margin="5,2" IsChecked="{Binding DataContext.ForceUpperCase, RelativeSource={RelativeSource AncestorType=Views:MainView}}" />
+                                        <CheckBox x:Name="chkLower" Grid.Column="0" Grid.Row="1" Content="Force lower case" VerticalAlignment="Center" Margin="5,2" IsChecked="{Binding DataContext.ForceLowerCase, RelativeSource={RelativeSource AncestorType=Views:MainView}}" />
+                                        <CheckBox x:Name="chkNumbers" Grid.Column="0" Grid.Row="2" Content="Force numbers" VerticalAlignment="Center" Margin="5,2" IsChecked="{Binding DataContext.ForceNumbers, RelativeSource={RelativeSource AncestorType=Views:MainView}}" />
+                                        <CheckBox x:Name="chkSymbols" Grid.Column="0" Grid.Row="3" Content="Use symbols" VerticalAlignment="Center" Margin="5,2" IsChecked="{Binding DataContext.UseSymbols, RelativeSource={RelativeSource AncestorType=Views:MainView}}" />
+                                        <TextBlock Grid.Column="0" Grid.Row="4" Text="Minimum strength" VerticalAlignment="Center" Margin="5,2" />
+
+                                        <Slider Grid.Column="1" Grid.Row="0" Style="{StaticResource SliderStyle}" IsEnabled="{Binding ElementName=chkUpper, Path=IsChecked}" Value="{Binding DataContext.MinUpperCount, RelativeSource={RelativeSource AncestorType=Views:MainView}}" />
+                                        <Slider Grid.Column="1" Grid.Row="1" Style="{StaticResource SliderStyle}" IsEnabled="{Binding ElementName=chkLower, Path=IsChecked}" Value="{Binding DataContext.MinLowerCount, RelativeSource={RelativeSource AncestorType=Views:MainView}}"/>
+                                        <Slider Grid.Column="1" Grid.Row="2" Style="{StaticResource SliderStyle}" IsEnabled="{Binding ElementName=chkNumbers, Path=IsChecked}" Value="{Binding DataContext.MinNumberCount, RelativeSource={RelativeSource AncestorType=Views:MainView}}"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="4" Height="Auto" VerticalAlignment="Center" ItemsSource="{Binding DataContext.PasswordStrengthValues, RelativeSource={RelativeSource AncestorType=Views:MainView}}" SelectedValue="{Binding MinStrength, Converter={StaticResource PasswordStrengthEnumToStringConverter}}" HorizontalAlignment="Stretch" Margin="5"/>
+                                        
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="Dictionary" Grid.Column="1" Margin="5" Grid.Row="0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="chkCustomDictionary" IsChecked="{Binding DataContext.UseCustomDictionary, RelativeSource={RelativeSource AncestorType=Views:MainView}}" Grid.Column="0" Grid.Row="0" Content="Use custom dictionary" HorizontalAlignment="Left"/>
+                                        <Button Grid.Row="0" Grid.Column="1" ToolTip="Select a custom dictionary" HorizontalAlignment="Right" IsEnabled="{Binding ElementName=chkCustomDictionary,Path=IsChecked}" Command="{Binding DataContext.SelectCustomDictionaryCommand, RelativeSource={RelativeSource AncestorType=Views:MainView}}" Margin="5">
+                                            <Image Style="{StaticResource ImageOpenStyle}"/>
+                                        </Button>
+                                        <TextBox IsEnabled="{Binding ElementName=chkCustomDictionary,Path=IsChecked}" IsReadOnly="True" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding DataContext.CustomDictionary, RelativeSource={RelativeSource AncestorType=Views:MainView }}" Margin="5"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="Generation" Grid.Column="1" Margin="5" Grid.Row="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Length" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Count" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Slider Grid.Row="0" Grid.Column="1" Style="{StaticResource SliderStyle}" Minimum="0" Maximum="32" TickFrequency="2"  Value="{Binding DataContext.PasswordLength, RelativeSource={RelativeSource AncestorType=Views:MainView}}"/>
+                                        <Slider Grid.Row="1" Grid.Column="1" Style="{StaticResource SliderStyle}" Minimum="0" Maximum="50" TickFrequency="5" IsSnapToTickEnabled="False" LargeChange="5" Value="{Binding DataContext.PasswordCount, RelativeSource={RelativeSource AncestorType=Views:MainView}}"/>
+                                        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Generate" MinWidth="75" MinHeight="30" Margin="5,2" IsEnabled="{Binding DataContext.CanGenerate, RelativeSource={RelativeSource AncestorType=Views:MainView}}" Command="{Binding DataContext.GenerateCommand, RelativeSource={RelativeSource AncestorType=Views:MainView}}"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                            <!-- Result panel -->
+                            <DataGrid x:Name="resultGrid" Margin="5" BorderThickness="0"  AutoGenerateColumns="False" EnableRowVirtualization="True" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="LightGray" HeadersVisibility="Column" SelectionMode="Extended" SelectionUnit="Cell" IsReadOnly="True" ItemsSource="{Binding GeneratedPasswords}" Grid.Row="1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding}" Header="Password" />
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border ToolTip="{Binding Strength}" Style="{StaticResource PasswordStrengthBorderStyle}"  Background="{Binding Strength, Converter={StaticResource PasswordStrengthEnumToBrushConverter}}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Binding="{Binding Strength, IsAsync=True}" Header="Strength"/>
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Save passwords" Command="{Binding SaveResultsCommand}">
+                                            <MenuItem.Icon>
+                                                <Image Style="{StaticResource ImageSaveStyle}"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Header="Clear all" Command="{Binding ClearResultsCommand}" >
+                                            <MenuItem.Icon>
+                                                <Image Style="{StaticResource ImageClearStyle}"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                            <!--Busy panel -->
+                            <Border x:Name="BusyPanel" CornerRadius="3" Grid.RowSpan="2" Visibility="{Binding IsGenerating, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Border.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <ProgressBar IsIndeterminate="True" Width="70" Height="18" Grid.Row="0" HorizontalAlignment="Right" Margin="5"/>
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+                                        <TextBlock Text="Password generation in progress, please wait or cancel." FontWeight="DemiBold" Foreground="White" Margin="0,10"/>
+                                        <Button HorizontalAlignment="Center" MinWidth="75" IsEnabled="{Binding DataContext.CanCancel, RelativeSource={RelativeSource AncestorType=Views:MainView}}" Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Views:MainView}}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Style="{StaticResource ImageCancelStyle}"/>
+                                                <TextBlock Text="Cancel" Margin="5,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsGenerating}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Name="busyStoryBoard">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="BusyPanel"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="0"
+                                            To="1"
+                                            Duration="00:00:00.5"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="busyStoryBoard"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- MainViewStatusBarStyle -->
+    <Style x:Key="MainViewStatusBarStyle" TargetType="{x:Type StatusBar}">
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+</ResourceDictionary>

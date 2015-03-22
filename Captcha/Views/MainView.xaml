@@ -1,0 +1,85 @@
+﻿<Window x:Class="Captcha.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:captcha="clr-namespace:Captcha"
+        Title="captcha generator" Height="320" Width="572" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <captcha:CaptchaPanel 
+            x:Name="captcha" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="Visible"
+            Padding="10"
+            Background="White"
+            TextLength="{Binding ElementName=slTextLength, Path=Value}"  
+            Font="{Binding ElementName=cbFonts, Path=SelectedItem}"
+            MinimumFontSize="{Binding ElementName=slMinFont, Path=Value}" 
+            MaximumFontSize="{Binding ElementName=slMaxFont, Path=Value}" 
+            MinimumRotateTransformAngle="{Binding ElementName=slMinAngle, Path=Value}"
+            MaximumRotateTransformAngle="{Binding ElementName=slMaxAngle, Path=Value}" 
+            PenThickness="{Binding ElementName=slPen, Path=Value}" 
+            SnapsToDevicePixels="True" 
+            BorderThickness="0"
+            ClipToBounds="False"
+            Width="180"
+            Height="80" >
+        </captcha:CaptchaPanel>
+
+        <GroupBox Header="Options" Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" MinWidth="120"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Text length" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider Value="{Binding ElementName=captcha, Path=TextLength}" Name="slTextLength" Minimum="3" Maximum="12" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TickFrequency="1" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft" IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" />
+                
+                <TextBlock Text="Fonts" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox SelectedItem="{Binding ElementName=captcha, Path=Font}" Name="cbFonts" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Min FontSize" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider Value="{Binding ElementName=captcha, Path=MinimumFontSize}" Name="slMinFont" Minimum="6" Maximum="80" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TickFrequency="10" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft"  IsMoveToPointEnabled="True" IsSnapToTickEnabled="False" />
+                
+                <TextBlock Text="Max FontSize" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider  Value="{Binding ElementName=captcha, Path=MaximumFontSize}" Name="slMaxFont" Minimum="6" Maximum="80" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TickFrequency="10" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft"  IsMoveToPointEnabled="True" IsSnapToTickEnabled="False" />
+
+                <TextBlock Text="Min Angle" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider  Value="{Binding ElementName=captcha, Path=MinimumRotateTransformAngle}" Name="slMinAngle" Minimum="-180" Maximum="180" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TickFrequency="10" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft"  IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" />
+                
+                <TextBlock Text="Max Angle" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider  Value="{Binding ElementName=captcha, Path=MaximumRotateTransformAngle}" Name="slMaxAngle" Minimum="-180" Maximum="180" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" TickFrequency="10" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft"  IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" />
+
+                <TextBlock Text="Pen size" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" />
+                <Slider  Value="{Binding ElementName=captcha, Path=PenThickness}" Name="slPen" Minimum="0" Maximum="10" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" TickFrequency="1" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft"  IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" />
+            </Grid>
+        </GroupBox>
+        
+        
+        <TextBlock Margin="5" Grid.Row="1" Grid.Column="0" TextWrapping="NoWrap" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Type the captcha :"/>
+        <TextBox Name="txtBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <Button Click="Button_Click_3" Content="Say" Width="70" Margin="5"/>
+            <Button Click="Button_Click_2" Content="Save as png" Width="70" Margin="5"/>
+            <Button Click="Button_Click_1" Content="Validate" Width="70" Margin="5"/>
+            <Button Click="Button_Click" Content="Generate" Width="70" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

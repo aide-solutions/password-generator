@@ -1,0 +1,38 @@
+﻿<Window x:Class="Wpf.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Wpf="clr-namespace:Wpf" mc:Ignorable="d"
+        d:DesignHeight="328" d:DesignWidth="526"
+        Width="530" Height="400"
+        Icon="/EasyPasswordGenerator;component/app.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl Style="{StaticResource MainViewContentStyle}" Grid.Row="0"/>
+        <StatusBar Style="{StaticResource MainViewStatusBarStyle}"  Grid.Row="1">
+            <StatusBarItem Content="{Binding GeneratedPasswordsCount}"/>
+            <Separator Background="LightGray"/>
+            <StatusBarItem Content="{Binding ElapsedTime}"/>
+            <Separator Background="LightGray"/>
+            <StatusBarItem >
+                <ProgressBar ToolTip="Current progress" Visibility="{Binding IsGenerating, Converter={StaticResource BooleanToVisibilityConverter}}" Height="18" HorizontalAlignment="Stretch" Width="100" Minimum="0" Maximum="100" Value="{Binding Progress}"/>
+            </StatusBarItem>
+            <Separator Background="LightGray"/>
+            <StatusBarItem >
+                
+            </StatusBarItem>
+            <Separator Background="LightGray"/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Button Command="{Binding EvaluatePasswordCommand}" VerticalAlignment="Center" Margin="0,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Style="{StaticResource ImageOkStyle}"/>
+                        <TextBlock Text="Evaluate a password" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
